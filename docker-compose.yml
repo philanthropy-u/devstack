@@ -240,6 +240,19 @@ services:
       - "1994:1994"
     environment:
       - NODE_ENV=development
+
+  nodebb:
+    command: bash -c 'npx grunt'
+    working_dir: '/usr/src/app'
+    container_name: edx.devstack.nodebb
+    image: node:8.15.1@sha256:287b8a533675e0c72cb374b5e5ab580961b2a203600e1758b95c475390bd9f9a
+    ports:
+      - "4567:4567"
+    volumes:
+      - ./nodebb/config.json:/usr/src/app/config.json
+      - ./nodebb/nodebb_setup.sh:/usr/src/app/nodebb_setup.sh
+    depends_on:
+      - mongo
       
 volumes:
   discovery_assets:

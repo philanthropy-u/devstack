@@ -1,0 +1,13 @@
+{
+    "url": "http://0.0.0.0:4567",
+    "secret": "aaaa8662-bb9a-4f8b-b4bb-e1ffe88fecda",
+    "database": "mongo",
+    "port": "4567",
+    "mongo": {
+        "host": "edx.devstack.mongo",
+        "port": "27017",
+        "username": "nodebb",
+        "password": "password",
+        "database": "nodebb"
+    }
+}

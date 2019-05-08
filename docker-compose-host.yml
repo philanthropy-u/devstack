@@ -37,6 +37,10 @@ services:
     volumes:
       - ${DEVSTACK_WORKSPACE}/gradebook:/edx/app/gradebook:cached
       - gradebook_node_modules:/edx/app/gradebook/node_modules
+  nodebb:
+    volumes:
+      - ${DEVSTACK_WORKSPACE}/NodeBB:/usr/src/app:cached
+      - nodebb_node_modules:/usr/src/app/node_modules
       
 volumes:
   credentials_node_modules:
@@ -44,3 +48,4 @@ volumes:
   ecommerce_node_modules:
   edxapp_node_modules:
   gradebook_node_modules:
+  nodebb_node_modules:
