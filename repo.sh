@@ -41,6 +41,13 @@ private_repos=(
     "https://github.com/edx/edx-themes.git"
 )
 
+repos_philu=(
+    "https://github.com/philanthropy-u/edx-platform.git"
+    "https://github.com/philanthropy-u/philu-edx-theme.git"
+    "https://github.com/philanthropy-u/nodebb-theme-philu-community.git"
+)
+
+
 name_pattern=".*/(.*).git"
 
 _checkout ()
@@ -66,7 +73,7 @@ _checkout ()
 
 checkout ()
 {
-    _checkout "${repos[@]}"
+    _checkout "${repos_philu[@]}"
 }
 
 _clone ()
@@ -121,6 +128,11 @@ clone_private ()
     _clone "${private_repos[@]}"
 }
 
+clone_philu ()
+{
+    _clone "${repos_philu[@]}"
+}
+
 reset ()
 {
     currDir=$(pwd)
@@ -162,6 +174,8 @@ elif [ "$1" == "clone" ]; then
     clone
 elif [ "$1" == "whitelabel" ]; then
     clone_private
+elif [ "$1" == "clone_philu" ]; then
+    clone_philu
 elif [ "$1" == "reset" ]; then
     read -p "This will override any uncommited changes in your local git checkouts. Would you like to proceed? [y/n] " -r
     if [[ $REPLY =~ ^[Yy]$ ]]; then
