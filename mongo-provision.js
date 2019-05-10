@@ -19,6 +19,18 @@ users = [
         'pwd': 'password',
         'roles': ['readWrite'],
         'database': 'edxapp'
+    },
+    {
+        'user': 'nodebb',
+        'pwd': 'password',
+        'roles': ['readWrite'],
+        'database': 'nodebb'
+    },
+    {
+        'user': 'nodebb',
+        'pwd': 'password',
+        'roles': ['clusterMonitor'],
+        'database': 'admin'
     }
 ];
 

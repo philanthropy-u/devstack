@@ -1,0 +1,5 @@
+version: "2.1"
+
+services:
+  nodebb:
+    command: bash -c '/usr/src/app/nodebb_setup.sh'
