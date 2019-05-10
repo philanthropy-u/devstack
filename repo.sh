@@ -41,6 +41,12 @@ private_repos=(
     "https://github.com/edx/edx-themes.git"
 )
 
+repos_philu=(
+    "https://github.com/philanthropy-u/edx-platform.git"
+    "https://github.com/philanthropy-u/philu-edx-theme.git"
+    "https://github.com/philanthropy-u/nodebb-theme-philu-community.git"
+)
+
 name_pattern=".*/(.*).git"
 
 _checkout ()
@@ -67,6 +73,11 @@ _checkout ()
 checkout ()
 {
     _checkout "${repos[@]}"
+}
+
+checkout_philu ()
+{
+    _checkout "${repos_philu[@]}"
 }
 
 _clone ()
@@ -121,6 +132,11 @@ clone_private ()
     _clone "${private_repos[@]}"
 }
 
+clone_philu ()
+{
+    _clone "${repos_philu[@]}"
+}
+
 reset ()
 {
     currDir=$(pwd)
@@ -169,4 +185,8 @@ elif [ "$1" == "reset" ]; then
     fi
 elif [ "$1" == "status" ]; then
     status
+elif [ "$1" == "checkout_philu" ]; then
+    checkout_philu
+elif [ "$1" == "clone_philu" ]; then
+    clone_philu
 fi

@@ -1,0 +1,48 @@
+########################################################################################################################
+#
+# When adding a new target:
+#   - If you are adding a new service make sure the dev.reset target will fully reset said service.
+#
+########################################################################################################################
+.DEFAULT_GOAL := help
+.PHONY: requirements
+
+DEVSTACK_WORKSPACE ?= $(shell pwd)/..
+
+OS := $(shell uname)
+
+# Need to run some things under winpty in a Windows git-bash shell
+# (but not when calling bash from a command shell or PowerShell)
+ifneq (,$(MINGW_PREFIX))
+    WINPTY := winpty
+else
+    WINPTY :=
+endif
+
+# Don't try redirecting to /dev/null in any Windows shell
+ifneq (,$(findstring MINGW,$(OS)))
+    DEVNULL :=
+else
+    DEVNULL := >/dev/null
+endif
+
+COMPOSE_PROJECT_NAME=devstack
+
+export DEVSTACK_WORKSPACE
+export COMPOSE_PROJECT_NAME
+
+include *.mk
+
+dev.clone: ## Clone service repos to the parent directory
+	./repo.sh clone_philu
+
+dev.checkout:
+	./repo.sh checkout_philu
+
+dev.provision.run: ## Provision all services with local mounted directories
+	DOCKER_COMPOSE_FILES="-f docker-compose.yml -f docker-compose-host.yml" $(WINPTY) bash ./provision_philu.sh
+
+dev.provision: | check-memory dev.clone dev.provision.run stop ## Provision dev environment with all services stopped
+
+check-memory: ## Check if enough memory has been allocated to Docker
+	@if [ `docker info --format '{{.MemTotal}}'` -lt 2095771648 ]; then echo "\033[0;31mWarning, System Memory is set too low!!! Increase Docker memory to be at least 2 Gigs\033[0m"; fi || exit 0
