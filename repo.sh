@@ -47,7 +47,6 @@ repos_philu=(
     "https://github.com/philanthropy-u/nodebb-theme-philu-community.git"
 )
 
-
 name_pattern=".*/(.*).git"
 
 _checkout ()
@@ -72,6 +71,11 @@ _checkout ()
 }
 
 checkout ()
+{
+    _checkout "${repos[@]}"
+}
+
+checkout_philu ()
 {
     _checkout "${repos_philu[@]}"
 }
@@ -174,8 +178,6 @@ elif [ "$1" == "clone" ]; then
     clone
 elif [ "$1" == "whitelabel" ]; then
     clone_private
-elif [ "$1" == "clone_philu" ]; then
-    clone_philu
 elif [ "$1" == "reset" ]; then
     read -p "This will override any uncommited changes in your local git checkouts. Would you like to proceed? [y/n] " -r
     if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -183,4 +185,8 @@ elif [ "$1" == "reset" ]; then
     fi
 elif [ "$1" == "status" ]; then
     status
+elif [ "$1" == "checkout_philu" ]; then
+    checkout_philu
+elif [ "$1" == "clone_philu" ]; then
+    clone_philu
 fi
