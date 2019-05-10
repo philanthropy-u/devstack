@@ -36,6 +36,9 @@ include *.mk
 dev.clone: ## Clone service repos to the parent directory
 	./repo.sh clone_philu
 
+dev.checkout:
+	./repo.sh checkout_philu
+
 dev.provision.run: ## Provision all services with local mounted directories
 	DOCKER_COMPOSE_FILES="-f docker-compose.yml -f docker-compose-host.yml" $(WINPTY) bash ./provision_philu.sh
 
