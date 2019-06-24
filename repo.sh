@@ -45,6 +45,7 @@ repos_philu=(
     "https://github.com/philanthropy-u/edx-platform.git"
     "https://github.com/philanthropy-u/philu-edx-theme.git"
     "https://github.com/philanthropy-u/nodebb-theme-philu-community.git"
+    "https://github.com/philanthropy-u/NodeBB"
 )
 
 name_pattern=".*/(.*).git"
