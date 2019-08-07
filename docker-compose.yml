@@ -135,6 +135,11 @@ services:
     ports:
       - "18130:18130"
 
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
   lms:
     command: bash -c 'source /edx/app/edxapp/edxapp_env && while true; do python /edx/app/edxapp/edx-platform/manage.py lms runserver 0.0.0.0:18000 --settings devstack_docker; sleep 2; done'
     container_name: edx.devstack.lms
@@ -144,6 +149,7 @@ services:
       - mysql
       - memcached
       - mongo
+      - redis
     # Allows attachment to the LMS service using 'docker attach <containerID>'.
     stdin_open: true
     tty: true
