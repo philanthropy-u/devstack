@@ -73,7 +73,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ""
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    image: mysql:5.6
+    image: mysql:5.7
     # ports:
     #   - "3306:3306"
     volumes:
@@ -159,7 +159,7 @@ services:
       BOK_CHOY_CMS_PORT: 18031
       EDXAPP_TEST_MONGO_HOST: edx.devstack.mongo
       NO_PYTHON_UNINSTALL: 1
-    image: edxops/edxapp:${OPENEDX_RELEASE:-latest}
+    image: philanthropyudev/philu:edxapp
     ports:
       - "18000:18000"
       - "19876:19876" # JS test debugging
@@ -207,7 +207,7 @@ services:
       BOK_CHOY_CMS_PORT: 18131
       EDXAPP_TEST_MONGO_HOST: edx.devstack.mongo
       NO_PYTHON_UNINSTALL: 1
-    image: edxops/edxapp:${OPENEDX_RELEASE:-latest}
+    image: philanthropyudev/philu:edxapp
     ports:
       - "18010:18010"
       - "19877:19877" # JS test debugging
