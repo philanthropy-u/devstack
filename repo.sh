@@ -45,6 +45,12 @@ repos_philu=(
     "https://github.com/philanthropy-u/edx-platform.git"
     "https://github.com/philanthropy-u/philu-edx-theme.git"
     "https://github.com/philanthropy-u/nodebb-theme-philu-community.git"
+    "https://github.com/philanthropy-u/nodebb-plugin-custom-join"
+    "https://github.com/philanthropy-u/nodebb-plugin-s3-uploads"
+    "https://github.com/NodeBB/nodebb-plugin-write-api"
+    "https://github.com/julianlam/nodebb-plugin-session-sharing"
+    "https://github.com/philanthropy-u/nodebb-theme-philu-community"
+    "https://github.com/philanthropy-u/nodebb-plugin-philu-badging"
     "https://github.com/philanthropy-u/NodeBB"
 )
 
