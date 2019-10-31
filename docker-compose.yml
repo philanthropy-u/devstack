@@ -150,7 +150,6 @@ services:
       - memcached
       - mongo
       - redis
-      - nodebb
     # Allows attachment to the LMS service using 'docker attach <containerID>'.
     stdin_open: true
     tty: true
@@ -257,6 +256,8 @@ services:
       - "4567:4567"
     depends_on:
       - mongo
+    volumes:
+      - ${DEVSTACK_WORKSPACE}/nodebb-theme-philu-community:/usr/src/app/plugins/nodebb-theme-philu-community
       
 volumes:
   discovery_assets:

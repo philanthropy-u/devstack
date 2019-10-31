@@ -79,11 +79,44 @@ dev.start.lms:
 dev.start.studio:
 	bash -c 'docker-compose -f docker-compose.yml -f docker-compose-host.yml start studio'
 
+dev.start.nodebb:
+	bash -c 'docker-compose -f docker-compose.yml -f docker-compose-host.yml start nodebb'
+
+dev.start.mongo:
+	bash -c 'docker-compose -f docker-compose.yml -f docker-compose-host.yml start mongo'
+
+dev.start.mysql:
+	bash -c 'docker-compose -f docker-compose.yml -f docker-compose-host.yml start mysql'
+
 dev.up.lms:
 	bash -c 'docker-compose -f docker-compose.yml -f docker-compose-host.yml up lms'
 
 dev.up.studio:
 	bash -c 'docker-compose -f docker-compose.yml -f docker-compose-host.yml up studio'
+
+dev.up.nodebb:
+	bash -c 'docker-compose -f docker-compose.yml -f docker-compose-host.yml up nodebb'
+
+dev.up.mongo:
+	bash -c 'docker-compose -f docker-compose.yml -f docker-compose-host.yml up mongo'
+
+dev.up.mysql:
+	bash -c 'docker-compose -f docker-compose.yml -f docker-compose-host.yml up mysql'
+
+dev.stop.lms:
+	bash -c 'docker-compose -f docker-compose.yml -f docker-compose-host.yml stop lms'
+
+dev.stop.studio:
+	bash -c 'docker-compose -f docker-compose.yml -f docker-compose-host.yml stop studio'
+
+dev.stop.nodebb:
+	bash -c 'docker-compose -f docker-compose.yml -f docker-compose-host.yml stop nodebb'
+
+dev.stop.mongo:
+	bash -c 'docker-compose -f docker-compose.yml -f docker-compose-host.yml stop mongo'
+
+dev.stop.mysql:
+	bash -c 'docker-compose -f docker-compose.yml -f docker-compose-host.yml stop mysql'
 
 dev.up: | check-memory ## Bring up all services with host volumes
 	bash -c 'docker-compose -f docker-compose.yml -f docker-compose-host.yml up -d'
