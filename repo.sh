@@ -18,9 +18,9 @@ else
 fi
 
 if [ -n "${OPENEDX_RELEASE}" ]; then
-    OPENEDX_GIT_BRANCH=philu.ironwood.master
+    OPENEDX_GIT_BRANCH=master
 else
-    OPENEDX_GIT_BRANCH=philu.ironwood.master
+    OPENEDX_GIT_BRANCH=master
 fi
 
 repos=(
