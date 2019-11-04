@@ -257,7 +257,7 @@ services:
     depends_on:
       - mongo
     volumes:
-      - ${DEVSTACK_WORKSPACE}/nodebb-theme-philu-community:/usr/src/app/plugins/nodebb-theme-philu-community
+      - ${DEVSTACK_WORKSPACE}/NodeBB/plugins/nodebb-theme-philu-community:/usr/src/app/plugins/nodebb-theme-philu-community
       
 volumes:
   discovery_assets:
