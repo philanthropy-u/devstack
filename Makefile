@@ -9,6 +9,9 @@
 
 DEVSTACK_WORKSPACE ?= $(shell pwd)/..
 
+HOST_IP = $(shell hostname -I | cut -d' ' -f1)
+export HOST_IP
+
 OS := $(shell uname)
 
 # Need to run some things under winpty in a Windows git-bash shell

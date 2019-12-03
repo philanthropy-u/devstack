@@ -60,7 +60,7 @@ services:
     command: mongod --smallfiles --nojournal --storageEngine wiredTiger
     container_name: edx.devstack.mongo
     hostname: mongo.devstack.edx
-    image: philanthropyudev/philu:mongo
+    image: mongo:3.2.16
     # ports:
     #  - "27017:27017"
     volumes:
@@ -73,7 +73,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ""
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    image: philanthropyudev/philu:mysql
+    image: mysql:5.6
     # ports:
     #   - "3306:3306"
     volumes:
@@ -150,7 +150,6 @@ services:
       - memcached
       - mongo
       - redis
-      - nodebb
     # Allows attachment to the LMS service using 'docker attach <containerID>'.
     stdin_open: true
     tty: true
@@ -168,6 +167,8 @@ services:
       # - "18031:18031"
     volumes:
       - edxapp_lms_assets:/edx/var/edxapp/staticfiles/
+    extra_hosts:
+      - local.philanthropyu.org:${HOST_IP}
 
   edx_notes_api:
     command: bash -c 'source /edx/app/edx_notes_api/edx_notes_api_env && while true; do python /edx/app/edx_notes_api/edx_notes_api/manage.py runserver 0.0.0.0:18120 --settings notesserver.settings.devstack; sleep 2; done'
@@ -216,6 +217,8 @@ services:
       # - "18131:18131"
     volumes:
       - edxapp_studio_assets:/edx/var/edxapp/staticfiles/
+    extra_hosts:
+      - local.philanthropyu.org:${HOST_IP}
 
   forum:
     command: bash -c 'source /edx/app/forum/ruby_env && source /edx/app/forum/devstack_forum_env && cd /edx/app/forum/cs_comments_service && bundle install && while true; do ruby app.rb -o 0.0.0.0 ; sleep 2; done'
@@ -257,7 +260,9 @@ services:
       - "4567:4567"
     depends_on:
       - mongo
-      
+    extra_hosts:
+      - local.philanthropyu.org:${HOST_IP}
+
 volumes:
   discovery_assets:
   edxapp_lms_assets:
