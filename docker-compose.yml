@@ -167,6 +167,8 @@ services:
       # - "18031:18031"
     volumes:
       - edxapp_lms_assets:/edx/var/edxapp/staticfiles/
+    extra_hosts:
+      - local.philanthropyu.org:172.17.2.175
 
   edx_notes_api:
     command: bash -c 'source /edx/app/edx_notes_api/edx_notes_api_env && while true; do python /edx/app/edx_notes_api/edx_notes_api/manage.py runserver 0.0.0.0:18120 --settings notesserver.settings.devstack; sleep 2; done'
@@ -215,6 +217,8 @@ services:
       # - "18131:18131"
     volumes:
       - edxapp_studio_assets:/edx/var/edxapp/staticfiles/
+    extra_hosts:
+      - local.philanthropyu.org:172.17.2.175
 
   forum:
     command: bash -c 'source /edx/app/forum/ruby_env && source /edx/app/forum/devstack_forum_env && cd /edx/app/forum/cs_comments_service && bundle install && while true; do ruby app.rb -o 0.0.0.0 ; sleep 2; done'
@@ -258,6 +262,8 @@ services:
       - mongo
     volumes:
       - ${DEVSTACK_WORKSPACE}/NodeBB/plugins/nodebb-theme-philu-community:/usr/src/app/plugins/nodebb-theme-philu-community
+    extra_hosts:
+      - local.philanthropyu.org:172.17.2.175
       
 volumes:
   discovery_assets:
