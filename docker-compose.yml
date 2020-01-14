@@ -61,8 +61,8 @@ services:
     container_name: edx.devstack.mongo
     hostname: mongo.devstack.edx
     image: philanthropyudev/philu:mongo
-    # ports:
-    #  - "27017:27017"
+    ports:
+     - "19001:27017"
     volumes:
       - mongo_data:/data/db
 
@@ -74,8 +74,8 @@ services:
       MYSQL_ROOT_PASSWORD: ""
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     image: philanthropyudev/philu:mysql
-    # ports:
-    #   - "3306:3306"
+    ports:
+      - "19000:3306"
     volumes:
       - mysql_data:/var/lib/mysql
 
@@ -168,7 +168,7 @@ services:
     volumes:
       - edxapp_lms_assets:/edx/var/edxapp/staticfiles/
     extra_hosts:
-      - local.philanthropyu.org:172.17.2.175
+      - local.philanthropyu.org:172.18.0.1
 
   edx_notes_api:
     command: bash -c 'source /edx/app/edx_notes_api/edx_notes_api_env && while true; do python /edx/app/edx_notes_api/edx_notes_api/manage.py runserver 0.0.0.0:18120 --settings notesserver.settings.devstack; sleep 2; done'
@@ -218,7 +218,7 @@ services:
     volumes:
       - edxapp_studio_assets:/edx/var/edxapp/staticfiles/
     extra_hosts:
-      - local.philanthropyu.org:172.17.2.175
+      - local.philanthropyu.org:172.18.0.1
 
   forum:
     command: bash -c 'source /edx/app/forum/ruby_env && source /edx/app/forum/devstack_forum_env && cd /edx/app/forum/cs_comments_service && bundle install && while true; do ruby app.rb -o 0.0.0.0 ; sleep 2; done'
@@ -263,7 +263,7 @@ services:
     volumes:
       - ${DEVSTACK_WORKSPACE}/NodeBB/plugins/nodebb-theme-philu-community:/usr/src/app/plugins/nodebb-theme-philu-community
     extra_hosts:
-      - local.philanthropyu.org:172.17.2.175
+      - local.philanthropyu.org:172.18.0.1
       
 volumes:
   discovery_assets:
