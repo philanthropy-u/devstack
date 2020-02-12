@@ -43,6 +43,8 @@ private_repos=(
 
 repos_philu=(
     "https://github.com/philanthropy-u/edx-platform.git"
+    "https://github.com/philanthropy-u/credentials.git"
+    "https://github.com/philanthropy-u/course-discovery.git"
     "https://github.com/philanthropy-u/philu-edx-theme.git"
     "https://github.com/philanthropy-u/nodebb-theme-philu-community.git"
     "https://github.com/philanthropy-u/NodeBB"
@@ -120,7 +122,7 @@ _checkout_and_update_branch ()
         git fetch origin ${OPENEDX_GIT_BRANCH}:${OPENEDX_GIT_BRANCH}
         git checkout ${OPENEDX_GIT_BRANCH}
     fi
-    find . -name '*.pyc' -not -path './.git/*' -delete 
+    find . -name '*.pyc' -not -path './.git/*' -delete
 }
 
 clone ()
