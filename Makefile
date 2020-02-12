@@ -103,6 +103,18 @@ dev.up.mongo:
 dev.up.mysql:
 	bash -c 'docker-compose -f docker-compose.yml -f docker-compose-host.yml up mysql'
 
+dev.up.discovery:
+	bash -c 'docker-compose -f docker-compose.yml -f docker-compose-host.yml up -d discovery'
+
+dev.up.credentials:
+	bash -c 'docker-compose -f docker-compose.yml -f docker-compose-host.yml up -d credentials'
+
+dev.stop.discovery:
+	bash -c 'docker-compose -f docker-compose.yml -f docker-compose-host.yml stop discovery'
+
+dev.stop.credentials:
+	bash -c 'docker-compose -f docker-compose.yml -f docker-compose-host.yml stop credentials'
+
 dev.stop.lms:
 	bash -c 'docker-compose -f docker-compose.yml -f docker-compose-host.yml stop lms'
 
