@@ -98,6 +98,8 @@ services:
     image: edxops/credentials:${OPENEDX_RELEASE:-latest}
     ports:
       - "18150:18150"
+    extra_hosts:
+      - local.philanthropyu.org:172.18.0.1
 
   discovery:
     command: bash -c 'source /edx/app/discovery/discovery_env && while true; do python /edx/app/discovery/discovery/manage.py runserver 0.0.0.0:18381; sleep 2; done'
@@ -118,6 +120,8 @@ services:
       - "18381:18381"
     volumes:
       - discovery_assets:/edx/var/discovery/
+    extra_hosts:
+      - local.philanthropyu.org:172.18.0.1
 
   ecommerce:
     command: bash -c 'source /edx/app/ecommerce/ecommerce_env && while true; do python /edx/app/ecommerce/ecommerce/manage.py runserver 0.0.0.0:18130; sleep 2; done'
@@ -264,7 +268,7 @@ services:
       - ${DEVSTACK_WORKSPACE}/NodeBB/plugins/nodebb-theme-philu-community:/usr/src/app/plugins/nodebb-theme-philu-community
     extra_hosts:
       - local.philanthropyu.org:172.18.0.1
-      
+
 volumes:
   discovery_assets:
   edxapp_lms_assets:
