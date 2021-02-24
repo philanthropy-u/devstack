@@ -171,6 +171,7 @@ services:
       # - "18031:18031"
     volumes:
       - edxapp_lms_assets:/edx/var/edxapp/staticfiles/
+      - scorm-volume:/edx/var/edxapp/uploads/scorm
     extra_hosts:
       - local.philanthropyu.org:172.18.0.1
 
@@ -221,6 +222,7 @@ services:
       # - "18131:18131"
     volumes:
       - edxapp_studio_assets:/edx/var/edxapp/staticfiles/
+      - scorm-volume:/edx/var/edxapp/media/scorm
     extra_hosts:
       - local.philanthropyu.org:172.18.0.1
 
@@ -277,3 +279,4 @@ volumes:
   mongo_data:
   mysql_data:
   devpi_data:
+  scorm-volume:
